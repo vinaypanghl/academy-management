@@ -1,0 +1,7 @@
+{
+  "name": "school-parent-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
