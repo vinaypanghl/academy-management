@@ -27,6 +27,7 @@
     "axios": "^1.12.2",
     "formik": "^2.4.6",
     "ionicons": "^7.4.0",
+    "lucide-react": "^1.14.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-redux": "^9.2.0",

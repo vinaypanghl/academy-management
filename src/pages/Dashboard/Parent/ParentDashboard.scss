@@ -1,0 +1,328 @@
+.parent-home__scroll {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 18px 22px 112px;
+}
+
+.parent-home__hero,
+.parent-home__child-card,
+.parent-home__insight,
+.parent-home__metrics button,
+.parent-home__actions button,
+.parent-home__updates button,
+.parent-home__upcoming button,
+.parent-home__state {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.04);
+}
+
+.parent-home__hero {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding: 22px;
+    background: linear-gradient(135deg, #ffffff 0%, #eef8ff 48%, #e7fbf1 100%);
+    box-shadow: var(--am-shadow);
+}
+
+.parent-home__watermark {
+    position: absolute;
+    right: 18px;
+    bottom: 10px;
+    color: rgba(16, 185, 129, 0.08);
+    font-size: 42px;
+    font-weight: 1000;
+    pointer-events: none;
+}
+
+.parent-home__hero p {
+    position: relative;
+    margin: 0;
+    color: var(--am-ink);
+    font-size: 25px;
+    font-weight: 1000;
+}
+
+.parent-home__hero div {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.parent-home__hero span {
+    color: #4e596a;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.parent-home__hero button {
+    min-height: 30px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--am-success);
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.parent-home__section {
+    margin-top: 26px;
+}
+
+.parent-home__section--tight {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.parent-home__section > h2,
+.parent-home__section header h2 {
+    margin: 0 0 12px;
+    color: #69717f;
+    font-size: 13px;
+    font-weight: 1000;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.parent-home__switch-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.parent-home__switch-row button,
+.parent-home__switch-row span,
+.parent-home__child-switcher button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #314052;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    box-shadow: 0 10px 22px rgba(24, 39, 75, 0.04);
+}
+
+.parent-home__switch-row button.is-active,
+.parent-home__child-switcher button.is-active {
+    background: var(--am-primary);
+    color: #ffffff;
+}
+
+.parent-home__child-card {
+    padding: 18px;
+}
+
+.parent-home__child-card > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.parent-home__child-card strong {
+    display: block;
+    color: #27303d;
+    font-size: 20px;
+    font-weight: 1000;
+}
+
+.parent-home__child-card span,
+.parent-home__child-card small {
+    display: block;
+    margin-top: 4px;
+    color: #596474;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.parent-home__child-card small {
+    color: var(--am-success);
+}
+
+.parent-home__child-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.parent-home__child-switcher button {
+    cursor: pointer;
+}
+
+.parent-home__insight {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 20px;
+    background: #ecfdf5;
+}
+
+.parent-home__insight strong {
+    color: #183528;
+    font-size: 18px;
+    font-weight: 1000;
+}
+
+.parent-home__insight span {
+    color: #356250;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.parent-home__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.parent-home__metrics button {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    min-height: 82px;
+    padding: 14px;
+    border: 0;
+    color: #293444;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.parent-home__metrics ion-icon {
+    grid-row: 1 / span 2;
+    color: var(--am-primary);
+    font-size: 24px;
+}
+
+.parent-home__metrics button.is-warning ion-icon,
+.parent-home__metrics button.is-warning strong {
+    color: var(--am-warning);
+}
+
+.parent-home__metrics strong {
+    color: var(--am-primary);
+    font-size: 22px;
+    font-weight: 1000;
+    line-height: 1;
+}
+
+.parent-home__metrics span {
+    margin-top: 4px;
+    color: #596474;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.parent-home__actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.parent-home__actions button {
+    display: flex;
+    min-height: 86px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 8px;
+    border: 0;
+    color: #2f3947;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.parent-home__actions ion-icon {
+    color: var(--am-primary);
+    font-size: 22px;
+}
+
+.parent-home__updates,
+.parent-home__upcoming {
+    display: grid;
+    gap: 10px;
+}
+
+.parent-home__updates button,
+.parent-home__upcoming button {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 10px 14px;
+    border: 0;
+    color: #394354;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.parent-home__updates ion-icon {
+    color: var(--am-indigo);
+    font-size: 18px;
+}
+
+.parent-home__upcoming ion-icon {
+    color: var(--am-success);
+    font-size: 18px;
+}
+
+.parent-home__state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 180px;
+    color: #536071;
+    font-weight: 900;
+}
+
+@media (max-width: 420px) {
+    .parent-home__scroll {
+        padding: 14px 16px 106px;
+    }
+
+    .parent-home__hero {
+        padding: 18px;
+    }
+
+    .parent-home__hero p {
+        font-size: 21px;
+    }
+
+    .parent-home__metrics {
+        gap: 8px;
+    }
+
+    .parent-home__metrics button {
+        min-height: 76px;
+        padding: 10px;
+    }
+
+    .parent-home__actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

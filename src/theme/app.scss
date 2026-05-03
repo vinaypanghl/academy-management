@@ -1,0 +1,700 @@
+:root {
+    --am-bg: #f8f9fa;
+    --am-surface: #ffffff;
+    --am-soft: #eef2f8;
+    --am-soft-strong: #e7ecf5;
+    --am-ink: #0c3157;
+    --am-ink-strong: #20242d;
+    --am-label: #565d6b;
+    --am-muted: #606978;
+    --am-primary: #004a7f;
+    --am-primary-pressed: #003c68;
+    --am-primary-soft: #dceeff;
+    --am-indigo: #4f46e5;
+    --am-success: #10b981;
+    --am-success-soft: #dff8ee;
+    --am-warning: #f59e0b;
+    --am-warning-soft: #fff3d6;
+    --am-danger-soft: #fee2e2;
+    --am-info-soft: #dceeff;
+    --am-line: #e7ebf3;
+    --am-danger: #c4272f;
+    --am-warning-ink: #884210;
+    --am-shadow: 0 16px 36px rgba(34, 49, 84, 0.08);
+    --am-blue: #1a73e8;
+    --am-blue-strong: #1557b0;
+    --am-blue-soft: #e8f0fe;
+    --am-gray-chip: #eef2f6;
+    --am-font-body: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --am-font-heading: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --am-font-friendly: Nunito, var(--am-font-body);
+    --am-font-corp: "Space Grotesk", var(--am-font-body);
+    --am-radius-sm: 4px;
+    --am-radius-md: 8px;
+    --am-radius-lg: 12px;
+    --am-radius-xl: 24px;
+    --am-size-xs: 12px;
+    --am-size-sm: 14px;
+    --am-size-base: 16px;
+    --am-size-lg: 18px;
+    --am-size-xl: 20px;
+    --am-size-2xl: 24px;
+    --am-size-3xl: 30px;
+    --am-size-4xl: 36px;
+    --ion-font-family: var(--am-font-body);
+    --ion-color-primary: #004a7f;
+    --ion-color-primary-rgb: 0, 74, 127;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #004170;
+    --ion-color-primary-tint: #1a5c8c;
+}
+
+html,
+body,
+ion-app {
+    background: var(--am-bg);
+    color: var(--am-ink-strong);
+    font-family: var(--am-font-body);
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+ion-button {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.am-page {
+    background: var(--am-bg);
+    color: var(--am-ink-strong);
+}
+
+.am-content {
+    --background: var(--am-bg);
+}
+
+.am-scroll {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 26px 28px 110px;
+}
+
+.am-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 0 16px;
+    border-radius: var(--am-radius-lg);
+    background: #dfeaf8;
+    color: #506076;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.am-primary-button,
+.am-secondary-button {
+    --border-radius: var(--am-radius-xl);
+    --box-shadow: 0 10px 22px rgba(0, 74, 127, 0.22);
+
+    height: 58px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.am-primary-button {
+    --background: var(--am-primary);
+    --background-activated: var(--am-primary-pressed);
+    --background-focused: var(--am-primary-pressed);
+    --background-hover: var(--am-primary-pressed);
+    --color: #ffffff;
+}
+
+.am-secondary-button {
+    --background: transparent;
+    --background-activated: rgba(12, 49, 87, 0.06);
+    --background-focused: rgba(12, 49, 87, 0.06);
+    --background-hover: rgba(12, 49, 87, 0.06);
+    --box-shadow: none;
+    --color: #343b48;
+}
+
+.app-header,
+.app-footer {
+    box-shadow: none;
+}
+
+.app-header::after,
+.app-footer::before {
+    display: none;
+}
+
+.app-header__toolbar {
+    --background: #1a73e8;
+    --border-color: transparent;
+    --border-width: 0;
+    --min-height: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+
+    color: #ffffff;
+    border-radius: 0 0 32px 32px;
+}
+
+.app-header__shell {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    padding: 48px 16px 24px;
+}
+
+.app-header__top,
+.app-header__leading,
+.app-header__actions,
+.app-header__hero-row {
+    display: flex;
+    align-items: center;
+}
+
+.app-header__top,
+.app-header__hero-row {
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.app-header__leading {
+    min-width: 0;
+    gap: 10px;
+}
+
+.app-header__brand,
+.app-header__editor-copy {
+    display: grid;
+    min-width: 0;
+    gap: 2px;
+}
+
+.app-header__brand {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.app-header__brand > span {
+    display: grid;
+    min-width: 0;
+    gap: 0;
+}
+
+.app-header__brand strong {
+    overflow: hidden;
+    color: #ffffff;
+    font-family: var(--am-font-friendly);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.app-header__editor-copy strong {
+    color: #ffffff;
+    font-family: var(--am-font-friendly);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    white-space: normal;
+}
+
+.app-header__brand small,
+.app-header__editor-copy small {
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.app-header__menu-button,
+.app-header__icon-button {
+    --border-radius: 999px;
+    --color: #ffffff;
+    --padding-end: 0;
+    --padding-start: 0;
+
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+
+.app-header__icon-button--solid {
+    --background: rgba(21, 87, 176, 0.45);
+    --background-activated: rgba(21, 87, 176, 0.62);
+    --background-focused: rgba(21, 87, 176, 0.62);
+    --background-hover: rgba(21, 87, 176, 0.62);
+
+    width: 48px;
+    height: 48px;
+}
+
+.app-header__actions {
+    gap: 10px;
+    margin-left: auto;
+}
+
+.app-header__role,
+.app-header__notification,
+.app-header__profile-button {
+    transition: transform 160ms ease;
+}
+
+.app-header__role:active,
+.app-header__notification:active,
+.app-header__profile-button:active,
+.app-footer__item:active,
+.app-footer__center:active,
+.am-tap:active {
+    transform: scale(0.98);
+}
+
+.app-header__role {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.app-header__notification {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.app-header__notification i {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    content: "";
+}
+
+.app-header__profile-button {
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.app-header__avatar {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.92);
+    box-shadow: none;
+}
+
+.app-header__avatar img {
+    object-fit: cover;
+}
+
+.app-header__top-action {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.app-header__hero-copy {
+    display: grid;
+    gap: 4px;
+    padding-top: 6px;
+}
+
+.app-header__hero-eyebrow {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.app-header__hero-copy h1 {
+    margin: 0;
+    color: #ffffff;
+    font-family: var(--am-font-friendly);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+}
+
+.app-header__hero-subtitle {
+    margin: 0;
+    color: rgba(210, 227, 252, 1);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.app-header__hero-row.has-action {
+    align-items: end;
+}
+
+.app-header__hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.app-footer {
+    position: relative;
+    background: #ffffff;
+}
+
+.app-footer__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.app-footer__nav {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: end;
+    height: 80px;
+    min-height: 80px;
+    padding: 0 16px max(8px, env(safe-area-inset-bottom));
+    border-top: 1px solid #e8eaed;
+    background: #ffffff;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.app-footer__item {
+    display: inline-flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 68px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #5f6368;
+    cursor: pointer;
+    font: inherit;
+    font-family: var(--am-font-friendly);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.app-footer__item.is-active {
+    color: #1a73e8;
+}
+
+.app-footer__center {
+    position: relative;
+    justify-self: center;
+    align-self: start;
+    display: inline-grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    margin-top: -24px;
+    padding: 0;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    background: #1a73e8;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(26, 115, 232, 0.32), inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.app-footer__center svg {
+    width: 30px;
+    height: 30px;
+}
+
+.app-create-modal {
+    --app-create-blue: #1a73e8;
+    --app-create-bg: #f8f9fa;
+    --app-create-border: #e8eaed;
+    --app-create-text: #202124;
+    --app-create-muted: #9aa0a6;
+    --app-create-green: #0d904f;
+    --app-create-amber: #f29900;
+    --app-create-purple: #8e24aa;
+    --app-create-font: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app-create-modal .bottom-action-sheet__body {
+    font-family: var(--app-create-font);
+}
+
+.app-create-sheet__list {
+    display: grid;
+    gap: 8px;
+}
+
+.app-create-sheet__item {
+    display: grid;
+    grid-template-columns: 48px 1fr 20px;
+    align-items: center;
+    gap: 14px;
+    min-height: 72px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #ffffff;
+    color: var(--app-create-muted);
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.app-create-sheet__item:hover {
+    border-color: var(--app-create-border);
+    background: var(--app-create-bg);
+}
+
+.app-create-sheet__item:active {
+    transform: scale(0.98);
+}
+
+.app-create-sheet__item > span {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.app-create-sheet__item strong {
+    color: var(--app-create-text);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.app-create-sheet__item--amber > span {
+    background: #fef7e0;
+    color: var(--app-create-amber);
+}
+
+.app-create-sheet__item--blue > span {
+    background: #e8f0fe;
+    color: var(--app-create-blue);
+}
+
+.app-create-sheet__item--green > span {
+    background: #e6f4ea;
+    color: var(--app-create-green);
+}
+
+.app-create-sheet__item--purple > span {
+    background: #f3e5f5;
+    color: var(--app-create-purple);
+}
+
+.app-action-footer {
+    border-top: 1px solid #e9edf4;
+    background: #ffffff;
+    box-shadow: 0 -12px 30px rgba(24, 39, 75, 0.08);
+}
+
+.app-action-footer__bar {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 26px 28px;
+}
+
+.app-action-footer__cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 58px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #343b48;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.app-action-footer__cancel ion-icon {
+    font-size: 24px;
+}
+
+.app-action-footer__submit ion-spinner {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    color: #67a5ce;
+}
+
+.feature-page__body h1 {
+    margin: 18px 0 8px;
+    color: var(--am-ink);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.feature-page__body p {
+    margin: 0;
+    color: var(--am-muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@media (max-width: 420px) {
+    .am-scroll {
+        padding: 22px 14px 96px;
+    }
+
+    .app-header__toolbar {
+        --min-height: 0;
+    }
+
+    .app-header__shell {
+        padding: 42px 16px 22px;
+        gap: 16px;
+    }
+
+    .app-header__brand strong {
+        font-size: 18px;
+    }
+
+    .app-header__editor-copy strong {
+        font-size: 22px;
+    }
+
+    .app-header__brand small,
+    .app-header__editor-copy small {
+        font-size: 11px;
+    }
+
+    .app-header__avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .app-header__actions {
+        gap: 8px;
+    }
+
+    .app-header__role {
+        font-size: 12px;
+    }
+
+    .app-header__hero-subtitle,
+    .app-header__hero-eyebrow,
+    .app-header__top-action {
+        font-size: 13px;
+    }
+
+    .app-header__hero-action {
+        min-height: 48px;
+        padding: 0 18px;
+        font-size: 16px;
+    }
+
+    .app-footer__nav {
+        height: 80px;
+        min-height: 80px;
+        padding-inline: 12px;
+    }
+
+    .app-footer__item {
+        font-size: 10px;
+    }
+
+    .app-footer__center {
+        width: 56px;
+        height: 56px;
+        margin-top: -20px;
+    }
+
+    .app-action-footer__bar {
+        gap: 12px;
+        padding: 16px 14px;
+    }
+
+    .app-action-footer__cancel,
+    .am-primary-button,
+    .am-secondary-button {
+        min-height: 50px;
+        height: 50px;
+        font-size: 13px;
+    }
+}

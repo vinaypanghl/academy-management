@@ -3,15 +3,34 @@ import { supabase } from '../../services/apiClient';
 import { persistor } from '../store';
 import { User, AuthState, Role } from '../../types/User';
 
+const knownRoles: Role[] = ['academy', 'admin', 'teacher', 'parent'];
+
+function normalizeRoles(metadata: any): Role[] {
+    const rawRoles = [
+        ...(Array.isArray(metadata.roles) ? metadata.roles : []),
+        ...(Array.isArray(metadata.available_roles) ? metadata.available_roles : []),
+        ...(Array.isArray(metadata.user_roles) ? metadata.user_roles : []),
+        metadata.role,
+    ];
+
+    return Array.from(new Set(rawRoles))
+        .map((role) => String(role || '').toLowerCase())
+        .filter((role): role is Role => knownRoles.includes(role as Role));
+}
+
 function mapSupabaseUser(authUser: any): User {
     const metadata = authUser?.user_metadata || {};
+    const roles = normalizeRoles(metadata);
+
     return {
       id: authUser.id,
       email: authUser.email || '',
       display_name: metadata.display_name || '',
-      role: metadata.role || null,
+      role: metadata.role || roles[0] || null,
+      roles,
       academy_id: metadata.academy_id || '',
       external_id: metadata.external_id || '',
+      profile_picture_url: metadata.profile_picture_url || metadata.avatar_url || null,
       is_active: true,
       phone: metadata.phone || null,
       created_at: authUser.created_at,

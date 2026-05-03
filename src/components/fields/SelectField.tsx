@@ -1,22 +1,26 @@
 import React from 'react';
 import { IonItem, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import type { SelectCustomEvent } from '@ionic/core';
 import { useField } from 'formik';
 
-type LabelPlacement = 'floating' | 'fixed' | 'stacked';
+type LabelPlacement = 'floating' | 'fixed' | 'stacked' | 'outside';
+type SelectValue = string | string[];
 
-interface SelectFieldProps {
+interface SelectFieldProps<T extends SelectValue = string> {
     name: string;
     label: string;
     placeholder?: string;
     multiple?: boolean;
     options: { value: string; label: string }[];
-    value?: string | string[];
-    onIonChange?: (e: any) => void;
+    value?: T;
+    onIonChange?: (e: SelectCustomEvent<T>) => void;
     labelPlacement?: LabelPlacement;
     error?: string;
+    className?: string;
+    required?: boolean;
 }
 
-const SelectField: React.FC<SelectFieldProps> = ({
+const SelectField = <T extends SelectValue = string>({
     name,
     label,
     placeholder,
@@ -26,8 +30,12 @@ const SelectField: React.FC<SelectFieldProps> = ({
     onIonChange: externalOnChange,
     labelPlacement = 'stacked',
     error,
-}) => {
+    className,
+    required = false,
+}: SelectFieldProps<T>) => {
     let field, meta, helpers;
+    const outsideLabel = labelPlacement === 'outside';
+    const selectId = `select-${name}`;
 
     // Try to bind to Formik if available
     try {
@@ -38,17 +46,30 @@ const SelectField: React.FC<SelectFieldProps> = ({
         helpers = { setValue: () => {} };
     }
 
-    const handleChange = (e: CustomEvent) => {
+    const handleChange = (e: SelectCustomEvent<T>) => {
         const val = e.detail.value;
         helpers.setValue(val);
         if (externalOnChange) externalOnChange(e);
     };
 
     return (
-        <>
-            <IonItem>
-                <IonLabel position={labelPlacement}>{label}</IonLabel>
+        <div className={`select-field ${className || ''}`}>
+            {outsideLabel && (
+                <label className="select-field__label" htmlFor={selectId}>
+                    {label}
+                    {required && <span className="select-field__required"> *</span>}
+                </label>
+            )}
+            <IonItem className="select-field__item" lines="none">
+                {!outsideLabel && (
+                    <IonLabel position={labelPlacement}>
+                        {label}
+                        {required && <span className="select-field__required"> *</span>}
+                    </IonLabel>
+                )}
                 <IonSelect
+                    id={selectId}
+                    className="select-field__select"
                     multiple={multiple}
                     placeholder={placeholder}
                     value={externalValue !== undefined ? externalValue : field.value || ''}
@@ -63,11 +84,11 @@ const SelectField: React.FC<SelectFieldProps> = ({
             </IonItem>
 
             {(meta.touched && meta.error) || error ? (
-                <IonText color="danger" className="ion-padding-start">
-                    {error || meta.error}
+                <IonText color="danger" className="select-field__error">
+                    <span>{error || meta.error}</span>
                 </IonText>
             ) : null}
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,397 @@
+.mark-attendance-page {
+    background: var(--am-bg);
+}
+
+.mark-attendance__scroll {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 16px 22px 180px;
+}
+
+.mark-attendance__notice {
+    display: grid;
+    grid-template-columns: 24px 1fr 30px;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    margin-bottom: 10px;
+    padding: 0 16px;
+    border-left: 4px solid var(--am-primary);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(24, 39, 75, 0.08);
+    color: #2f3743;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.mark-attendance__notice > ion-icon {
+    color: var(--am-primary);
+    font-size: 20px;
+}
+
+.mark-attendance__notice button {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #697283;
+    cursor: pointer;
+}
+
+.mark-attendance__class-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.mark-attendance__class-strip label {
+    display: grid;
+    gap: 6px;
+}
+
+.mark-attendance__class-strip label span {
+    color: #5d6675;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.mark-attendance__class-strip select,
+.mark-attendance__class-strip input {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--am-ink);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.04);
+}
+
+.mark-attendance__class-strip small {
+    align-self: end;
+    color: #697283;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.mark-attendance__search {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    margin-bottom: 14px;
+    padding: 0 14px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #7b8494;
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.04);
+}
+
+.mark-attendance__search input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #273142;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.mark-attendance__summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #eef6ff;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.mark-attendance__summary strong {
+    color: var(--am-ink);
+}
+
+.mark-attendance__segments {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    overflow: hidden;
+    margin-bottom: 28px;
+    padding: 4px;
+    border-radius: 8px;
+    background: #e9eef6;
+}
+
+.mark-attendance__segments button {
+    min-height: 52px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #4c5667;
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.mark-attendance__segments button:active {
+    transform: translateY(1px);
+}
+
+.mark-attendance__segments button.is-active {
+    background: #ffffff;
+    color: var(--am-primary);
+    box-shadow: 0 8px 18px rgba(24, 39, 75, 0.06);
+}
+
+.mark-attendance__list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.mark-attendance__list-header h2 {
+    margin: 0;
+    color: #69717f;
+    font-size: 14px;
+    font-weight: 1000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.mark-attendance__list-header button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--am-primary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.mark-attendance__list-header button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.mark-attendance__students {
+    display: grid;
+    gap: 14px;
+}
+
+.mark-attendance__students article,
+.mark-attendance__state {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.04);
+}
+
+.mark-attendance__students article {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    min-height: 94px;
+    padding: 13px 18px;
+}
+
+.mark-attendance__students article.is-muted {
+    opacity: 0.58;
+}
+
+.mark-attendance__students strong {
+    display: block;
+    color: #2e3642;
+    font-size: 18px;
+    font-weight: 1000;
+    letter-spacing: 0;
+}
+
+.mark-attendance__students span {
+    display: block;
+    margin-top: 4px;
+    color: #697283;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.mark-attendance__status-group {
+    display: grid;
+    grid-template-columns: repeat(4, 36px);
+    gap: 6px;
+}
+
+.mark-attendance__status-group button {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 34px;
+    border: 1px solid #dce3ee;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #485466;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 1000;
+}
+
+.mark-attendance__status-group button.is-active {
+    border-color: transparent;
+    background: var(--am-primary);
+    color: #ffffff;
+}
+
+.mark-attendance__status-group button:nth-child(2).is-active {
+    background: var(--am-danger);
+}
+
+.mark-attendance__status-group button:nth-child(3).is-active {
+    background: var(--am-warning);
+}
+
+.mark-attendance__status-group button:nth-child(4).is-active {
+    background: var(--am-success);
+}
+
+.mark-attendance__status-group button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.mark-attendance__remark {
+    grid-column: 2 / -1;
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    margin-top: -4px;
+    padding: 0 10px;
+    border-radius: 8px;
+    background: #f4f7fb;
+    color: #7a8494;
+}
+
+.mark-attendance__remark input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #2e3745;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.mark-attendance__state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 180px;
+    padding: 24px;
+    color: #536071;
+    font-weight: 900;
+    text-align: center;
+}
+
+.mark-attendance__submit-shell {
+    position: fixed;
+    right: 0;
+    bottom: 72px;
+    left: 0;
+    z-index: 20;
+    padding: 12px 22px 10px;
+    background: linear-gradient(180deg, rgba(245, 247, 252, 0), var(--am-bg) 24%);
+}
+
+.mark-attendance__submit-shell::before {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background: #e7ebf3;
+    content: "";
+}
+
+.mark-attendance__submit {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+@media (max-width: 420px) {
+    .mark-attendance__scroll {
+        padding: 12px 14px 168px;
+    }
+
+    .mark-attendance__notice {
+        min-height: 50px;
+        font-size: 13px;
+    }
+
+    .mark-attendance__class-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .mark-attendance__segments button {
+        min-height: 44px;
+        font-size: 13px;
+    }
+
+    .mark-attendance__students article {
+        grid-template-columns: 46px 1fr;
+        min-height: 104px;
+        padding: 11px 14px;
+    }
+
+    .mark-attendance__status-group,
+    .mark-attendance__remark {
+        grid-column: 1 / -1;
+    }
+
+    .mark-attendance__status-group {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .mark-attendance__status-group button {
+        width: 100%;
+    }
+
+    .mark-attendance__students strong {
+        font-size: 15px;
+    }
+
+    .mark-attendance__submit-shell {
+        bottom: 70px;
+        padding: 10px 14px;
+    }
+}

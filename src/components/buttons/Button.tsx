@@ -7,6 +7,7 @@ interface ButtonProps {
     children: React.ReactNode;
     type?: 'button' | 'submit' | 'reset';
     color?: string;
+    className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,8 +16,9 @@ const Button: React.FC<ButtonProps> = ({
     children,
     type = 'button',
     color = 'primary',
+    className,
 }) => (
-    <IonButton onClick={onClick} disabled={disabled} type={type} color={color} expand="block">
+    <IonButton onClick={onClick} disabled={disabled} type={type} color={color} expand="block" className={className}>
         {children}
     </IonButton>
 );

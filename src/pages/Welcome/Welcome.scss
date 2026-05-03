@@ -1,0 +1,118 @@
+.welcome-page {
+    --background: #f5f7fc;
+}
+
+.welcome-container {
+    position: relative;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    overflow: hidden;
+    padding: 24px;
+    background: linear-gradient(135deg, #f8fbff 0%, #eef7ff 50%, #edfdf5 100%);
+    color: #181c20;
+    text-align: center;
+}
+
+.welcome-container::before {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/welcome-image.png");
+    background-position: center;
+    background-size: cover;
+    content: "";
+    opacity: 0.08;
+}
+
+.glow-top,
+.glow-bottom {
+    display: none;
+}
+
+.welcome-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 390px;
+    padding: 28px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--am-shadow);
+    backdrop-filter: blur(14px);
+}
+
+.logo-box {
+    display: grid;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 22px;
+    place-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(12, 49, 87, 0.12);
+}
+
+.logo-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.brand {
+    margin-bottom: 14px;
+    color: var(--am-primary);
+    font-size: 15px;
+    font-weight: 1000;
+    letter-spacing: 0;
+}
+
+.title {
+    margin: 0;
+    color: var(--am-ink);
+    font-size: 32px;
+    font-weight: 1000;
+    letter-spacing: 0;
+    line-height: 1.12;
+}
+
+.subtitle {
+    margin: 12px 0 28px;
+    color: #4c5868;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.55;
+}
+
+.primary-btn {
+    --border-radius: 8px;
+    --background: var(--am-primary);
+    --background-activated: var(--am-primary-pressed);
+    --box-shadow: 0 10px 24px rgba(0, 74, 127, 0.22);
+
+    height: 52px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-weight: 900;
+    text-transform: none;
+}
+
+.primary-btn::part(native) {
+    background: var(--am-primary);
+}
+
+.login-btn {
+    color: var(--am-primary);
+    cursor: pointer;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+@media (max-width: 420px) {
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+}

@@ -1,155 +1,241 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { IonContent, IonPage } from '@ionic/react';
 import {
-    IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol,
-    IonButton, IonIcon, IonToast, IonMenuButton, IonButtons,
-} from '@ionic/react';
-import { schoolOutline, personAddOutline, peopleOutline, personOutline } from 'ionicons/icons';
-import { useCreateClassesMutation, useCreateStudentsMutation, useFetchClassesQuery } from '../../../redux/api/api';
-import CreateClassModal from '../../../components/modals/Classes/ClassCreateModal';
-import CreateStudentModal from '../../../components/modals/Student/StudentCreateModal';
-import { CreateStudentInput, ParentInput, Student } from '../../../types';
-import CreateStaffModal from '../../../components/modals/Users/CreateStaffModal';
+    ArrowDownCircle,
+    ArrowRight,
+    ArrowUpCircle,
+    CalendarCheck,
+    ChartColumn,
+    CheckCircle,
+    CreditCard,
+    FileText,
+    FolderPlus,
+    Gift,
+    Hourglass,
+    Megaphone,
+    PieChart,
+    Rocket,
+    ShieldCheck,
+    TrendingUp,
+    TriangleAlert,
+    UserPlus,
+    UserRoundCheck,
+    Users,
+    Zap,
+} from 'lucide-react';
+import { useHistory } from 'react-router-dom';
+import AppFooter from '../../../components/layout/AppFooter';
+import AppHeader from '../../../components/layout/AppHeader';
+import { useFetchAcademyOverviewQuery } from '../../../redux/api/api';
 import { useAppSelector } from '../../../redux/hooks';
-// import CreateUserModal from '../../../components/modals/UserCreateModal';
-// types.ts
-  
+import './AcademyDashboard.scss';
+
 const AcademyDashboard: React.FC = () => {
-    const [toastMsg, setToastMsg] = useState<string | null>(null);
-    const [classModalOpen, setClassModalOpen] = useState(false);
-    const [studentModalOpen, setStudentModalOpen] = useState(false);
-    const [userModalOpen, setUserModalOpen] = useState(false);
-
-    const [createClass, { isLoading: creatingClass }] = useCreateClassesMutation();
-    const [createStudent, { isLoading: creatingStudent }] = useCreateStudentsMutation();
-    const { data: classes = [], error: classesError } = useFetchClassesQuery();
-
-    const [createAdminOpen, setCreateAdminOpen] = useState(false);
-    const [createTeacherOpen, setCreateTeacherOpen] = useState(false);
-
+    const history = useHistory();
     const currentUser = useAppSelector((state) => state.auth.user);
     const role = currentUser?.role;
+    const { data: overview, isFetching } = useFetchAcademyOverviewQuery();
 
-    const handleCreateClass = async (classData: Partial<any>) => {
-        try {
-            const result = await createClass(classData).unwrap();
-            setToastMsg(result.message || 'Class created successfully');
-            setClassModalOpen(false);
-        } catch (err: any) {
-            setToastMsg(err.data?.error || 'Failed to create class');
-        }
-    };
+    const academyName = overview?.academy.academy_name || 'EduCore Academy';
+    const classCount = overview?.metrics.classes || 0;
+    const studentCount = overview?.metrics.students || 0;
+    const teacherCount = overview?.metrics.teachers || 0;
+    const averageAttendance = overview?.metrics.attendance_today || 84;
+    const averageMarks = overview?.metrics.average_marks || 68;
+    const seatsUsed = overview?.metrics.active_students || studentCount || 120;
+    const seatsTotal = 500;
+    const planUtilization = Math.min(Math.round((seatsUsed / seatsTotal) * 100), 100);
 
-    const handleCreateStudent = async (studentData: CreateStudentInput) => {
-        try {
-            const result = await createStudent(studentData).unwrap();
-            setToastMsg(result.message || 'Student created successfully');
-            setStudentModalOpen(false);
-        } catch (err: any) {
-            console.error('Create student error:', err);
-            setToastMsg(err.data?.error || 'Failed to create student');
-        }
-    };
+    const quickActions = [
+        { label: 'Add Student', icon: UserPlus, path: '/create-student', visible: true, tone: 'blue' },
+        { label: 'Add Teacher', icon: UserRoundCheck, path: '/create-teacher', visible: role === 'academy' || role === 'admin', tone: 'green' },
+        { label: 'Create Class', icon: FolderPlus, path: '/create-class', visible: true, tone: 'amber' },
+        { label: 'Announcements', icon: Megaphone, path: '/announcements', visible: true, tone: 'rose' },
+        { label: 'Assign Roles', icon: ShieldCheck, path: '/manage/users', visible: true, tone: 'purple' },
+        { label: 'Reports', icon: FileText, path: '/reports', visible: true, tone: 'cyan' },
+    ];
 
-    const sanitizedClasses = classes.map(c => ({
-        ...c,
-        section: c.section ?? undefined,
-    }));
-
+    const attendanceBars = [58, 70, 50, 78, 64];
 
     return (
-        <IonPage id="main-content">
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonMenuButton />
-                    </IonButtons>
-                    <IonTitle>Menu</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent className="ion-padding">
-                <IonGrid>
-                    <IonRow className="ion-justify-content-around ion-margin-bottom">
-                        <IonCol size="12" sizeMd="4">
-                            <IonButton expand="block" color="primary" onClick={() => setClassModalOpen(true)}>
-                                <IonIcon icon={schoolOutline} slot="start" />
-                                Create Class
-                            </IonButton>
-                        </IonCol>
+        <IonPage className="am-page academy-dashboard">
+            <AppHeader
+                title="Dashboard"
+                heroTitle="Dashboard"
+                heroSubtitle={academyName}
+            />
+            <IonContent className="am-content academy-dashboard__content" fullscreen>
+                <main className="academy-dashboard__scroll">
+                    <section className="academy-section academy-section--overview">
+                        <h2>
+                            <PieChart size={18} strokeWidth={2.3} />
+                            <span>Overview</span>
+                        </h2>
+                        <div className="academy-dashboard__stats">
+                            <article className="academy-metric-card">
+                                <span className="academy-metric-card__icon is-blue"><Users size={18} strokeWidth={2.25} /></span>
+                                <strong>{isFetching ? '--' : studentCount}</strong>
+                                <small>Students</small>
+                            </article>
+                            <article className="academy-metric-card">
+                                <span className="academy-metric-card__icon is-green"><UserRoundCheck size={18} strokeWidth={2.25} /></span>
+                                <strong>{isFetching ? '--' : teacherCount}</strong>
+                                <small>Teachers</small>
+                            </article>
+                            <article className="academy-metric-card">
+                                <span className="academy-metric-card__icon is-amber"><CreditCard size={18} strokeWidth={2.25} /></span>
+                                <strong>{isFetching ? '--' : classCount}</strong>
+                                <small>Classes</small>
+                            </article>
+                            <article className="academy-metric-card academy-metric-card--wide">
+                                <div>
+                                    <small>Avg Attendance</small>
+                                    <strong className="is-green">{averageAttendance}%</strong>
+                                </div>
+                                <span className="academy-metric-card__icon is-green-soft"><CalendarCheck size={22} strokeWidth={2.25} /></span>
+                            </article>
+                            <article className="academy-metric-card academy-metric-card--wide">
+                                <div>
+                                    <small>Avg Marks</small>
+                                    <strong className="is-blue">{averageMarks}%</strong>
+                                </div>
+                                <span className="academy-metric-card__icon is-blue-soft"><ChartColumn size={22} strokeWidth={2.25} /></span>
+                            </article>
+                        </div>
+                    </section>
 
-                        <IonCol size="12" sizeMd="4">
-                            <IonButton expand="block" color="secondary" onClick={() => setStudentModalOpen(true)}>
-                                <IonIcon icon={personAddOutline} slot="start" />
-                                Create Student
-                            </IonButton>
-                        </IonCol>
+                    <section className="academy-section academy-section--actions">
+                        <h2>
+                            <Zap size={18} strokeWidth={2.3} />
+                            <span>Quick Actions</span>
+                        </h2>
+                        <div className="academy-dashboard__actions">
+                            {quickActions.filter((action) => action.visible).map((action) => {
+                                const Icon = action.icon;
+                                return (
+                                    <button
+                                        key={action.path}
+                                        type="button"
+                                        className={`academy-action-card academy-action-card--${action.tone}`}
+                                        onClick={() => history.push(action.path)}
+                                    >
+                                        <span><Icon size={22} strokeWidth={2.2} /></span>
+                                        <strong>{action.label}</strong>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </section>
 
-                        {/* <IonCol size="12" sizeMd="4">
-                            <IonButton expand="block" color="tertiary" onClick={() => setUserModalOpen(true)}>
-                                <IonIcon icon={peopleOutline} slot="start" />
-                                Create Account
-                            </IonButton>
-                        </IonCol> */}
-                        {/* Academy ONLY */}
-                        {role === 'academy' && (
-                        <IonCol size="12" sizeMd="4">
-                            <IonButton expand="block" color="tertiary" onClick={() => setCreateAdminOpen(true)}>
-                            <IonIcon icon={peopleOutline} slot="start" />
-                            Create Admin
-                            </IonButton>
-                        </IonCol>
-                        )}
+                    <article className="academy-card academy-card--subscription" aria-label="Subscription">
+                        <span className="academy-card__wash" aria-hidden="true" />
+                        <header className="academy-card__heading">
+                            <h3>
+                                <CreditCard size={18} strokeWidth={2.25} />
+                                <span>Subscription</span>
+                            </h3>
+                        </header>
+                        <div className="academy-dashboard__current-plan">
+                            <span />
+                            <strong>Current Plan: PRO</strong>
+                        </div>
+                        <div className="academy-dashboard__plan-meta">
+                            <span>Seats Used</span>
+                            <b>{seatsUsed} / {seatsTotal}</b>
+                        </div>
+                        <div className="academy-dashboard__progress-row">
+                            <div className="academy-dashboard__progress" aria-label={`${planUtilization}% seats used`}>
+                                <i style={{ width: `${planUtilization}%` }} />
+                            </div>
+                            <strong>{planUtilization}%</strong>
+                        </div>
+                        <p>Valid Till: 30 Sep 2026</p>
+                        <button type="button" className="academy-primary-button" onClick={() => history.push('/settings')}>
+                            <span>Upgrade Plan</span>
+                            <ArrowRight size={18} strokeWidth={2.4} />
+                        </button>
+                    </article>
 
-                        {/* Academy + Admin */}
-                        {(role === 'academy' || role === 'admin') && (
-                        <IonCol size="12" sizeMd="4">
-                            <IonButton expand="block" color="medium" onClick={() => setCreateTeacherOpen(true)}>
-                            <IonIcon icon={personOutline} slot="start" />
-                            Create Teacher
-                            </IonButton>
-                        </IonCol>
-                        )}
-                    </IonRow>
-                </IonGrid>
+                    <article className="academy-card academy-card--trial" aria-label="Starter plan">
+                        <header className="academy-dashboard__trial-top">
+                            <span>Starter Plan</span>
+                            <b><Gift size={20} strokeWidth={2.15} /></b>
+                        </header>
+                        <h3>Free Trial (7 Days)</h3>
+                        <div className="academy-dashboard__trial-box">
+                            <p>Features: Limited access</p>
+                            <p>Students Limit: 50</p>
+                        </div>
+                        <strong>
+                            <Hourglass size={17} strokeWidth={2.1} />
+                            <span>Days Left: 3</span>
+                        </strong>
+                        <button type="button" className="academy-dark-button" onClick={() => history.push('/settings')}>
+                            <Rocket size={18} strokeWidth={2.25} />
+                            <span>Activate Now</span>
+                        </button>
+                    </article>
 
-                <CreateClassModal
-                    isOpen={classModalOpen}
-                    onClose={() => setClassModalOpen(false)}
-                    onCreate={handleCreateClass}
-                    isSubmitting={creatingClass}
-                />
+                    <article className="academy-card academy-chart-card" aria-label="Attendance trend">
+                        <div className="academy-card__heading academy-card__heading--split">
+                            <h3>Attendance Trend</h3>
+                            <span>Weekly</span>
+                        </div>
+                        <div className="academy-dashboard__chart" aria-hidden="true">
+                            <div className="academy-dashboard__chart-grid" />
+                            <div className="academy-dashboard__chart-bars">
+                                {attendanceBars.map((height, index) => (
+                                    <i key={index} style={{ height: `${height}%` }} />
+                                ))}
+                            </div>
+                            <footer>
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                            </footer>
+                        </div>
+                    </article>
 
-                <CreateStudentModal
-                    isOpen={studentModalOpen}
-                    onClose={() => setStudentModalOpen(false)}
-                    onCreate={handleCreateStudent}
-                    isSubmitting={creatingStudent}
-                    classes={sanitizedClasses}
-                />
+                    <article className="academy-card academy-performance-card">
+                        <div className="academy-card__heading">
+                            <h3>
+                                <TrendingUp size={18} strokeWidth={2.25} />
+                                <span>Marks Performance</span>
+                            </h3>
+                        </div>
+                        <div className="academy-dashboard__performance-grid">
+                            <button type="button" className="is-green" onClick={() => history.push('/reports?filter=top')}>
+                                <ArrowUpCircle size={20} strokeWidth={2.2} />
+                                <span>Top Performers</span>
+                            </button>
+                            <button type="button" className="is-red" onClick={() => history.push('/reports?filter=low')}>
+                                <ArrowDownCircle size={20} strokeWidth={2.2} />
+                                <span>Low Performers</span>
+                            </button>
+                        </div>
+                    </article>
 
-                {/* <CreateUserModal
-                    isOpen={userModalOpen}
-                    onClose={() => setUserModalOpen(false)} 
-                    currentUserRole={currentUserRole}
-                /> */}
-                <CreateStaffModal
-                    isOpen={createAdminOpen}
-                    onClose={() => setCreateAdminOpen(false)}
-                    role="admin"
-                />
-
-                <CreateStaffModal
-                    isOpen={createTeacherOpen}
-                    onClose={() => setCreateTeacherOpen(false)}
-                    role="teacher"
-                />
-
-                <IonToast
-                    isOpen={!!toastMsg}
-                    message={toastMsg || ''}
-                    duration={2000}
-                    onDidDismiss={() => setToastMsg(null)}
-                />
+                    <section className="academy-card academy-dashboard__alerts">
+                        <h3>
+                            <TriangleAlert size={18} strokeWidth={2.25} />
+                            <span>Alerts</span>
+                        </h3>
+                        <ul>
+                            <li>
+                                <CheckCircle size={12} strokeWidth={3} />
+                                <span>12 students low attendance</span>
+                            </li>
+                            <li>
+                                <CheckCircle size={12} strokeWidth={3} />
+                                <span>8 students low marks</span>
+                            </li>
+                        </ul>
+                    </section>
+                </main>
             </IonContent>
+            <AppFooter />
         </IonPage>
     );
 };

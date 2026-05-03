@@ -4,4 +4,6 @@ export interface ClassSection {
     class_name: string;
     section?: string | null;
     academic_year: string;
+    teacher_name?: string | null;
+    student_count?: number;
 }

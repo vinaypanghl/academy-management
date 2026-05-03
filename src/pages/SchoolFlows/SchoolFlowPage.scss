@@ -1,0 +1,562 @@
+.school-flow__scroll {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 16px 22px 112px;
+}
+
+.school-flow__brand-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 42px;
+    margin-bottom: 16px;
+    padding: 0 14px;
+    border-radius: 8px;
+    background: #eef6ff;
+}
+
+.school-flow__brand-strip span {
+    color: var(--am-primary);
+    font-size: 13px;
+    font-weight: 1000;
+}
+
+.school-flow__brand-strip strong {
+    color: #536071;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.school-flow__form,
+.school-flow__summary-card,
+.school-flow__calendar,
+.school-flow__student-card,
+.school-flow__graph,
+.school-flow__state,
+.school-flow__homework-card,
+.school-flow__feedback-card,
+.school-flow__document-card,
+.school-flow__row,
+.school-flow__report-cards article,
+.school-flow__bullets,
+.school-flow__table {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.04);
+}
+
+.school-flow__form {
+    display: grid;
+    gap: 18px;
+    padding: 18px;
+}
+
+.school-flow__form label,
+.school-flow__filters label {
+    display: grid;
+    gap: 7px;
+}
+
+.school-flow__form label span,
+.school-flow__filters label span {
+    color: #5b6576;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.school-flow__form input,
+.school-flow__form textarea,
+.school-flow__form select,
+.school-flow__filters select,
+.school-flow__filters input,
+.school-flow__table input {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid #e1e7f0;
+    border-radius: 8px;
+    outline: 0;
+    background: #f9fbfe;
+    color: #273142;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.school-flow__form textarea {
+    min-height: 78px;
+    padding-top: 12px;
+    resize: vertical;
+}
+
+.school-flow__upload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #eef6ff;
+    color: var(--am-primary);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 900;
+}
+
+.school-flow__section {
+    margin-top: 24px;
+}
+
+.school-flow__section--first {
+    margin-top: 0;
+}
+
+.school-flow__section h2,
+.school-flow__graph h2 {
+    margin: 0 0 12px;
+    color: #69717f;
+    font-size: 13px;
+    font-weight: 1000;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.school-flow__stack {
+    display: grid;
+    gap: 10px;
+}
+
+.school-flow__row {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 10px 14px;
+    color: #394354;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.school-flow__row ion-icon {
+    color: var(--am-primary);
+    font-size: 18px;
+}
+
+.school-flow__cta {
+    position: sticky;
+    bottom: 82px;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(24, 39, 75, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.school-flow__cta--single {
+    grid-template-columns: 1fr;
+}
+
+.school-flow__cta button,
+.school-flow__chips button,
+.school-flow__homework-card button,
+.school-flow__document-card button,
+.school-flow__table button {
+    min-height: 42px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #edf2f8;
+    color: #2c3747;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.school-flow__cta button.is-primary,
+.school-flow__chips button.is-active {
+    background: var(--am-primary);
+    color: #ffffff;
+}
+
+.school-flow__cta button:disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
+.school-flow__filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.school-flow__table {
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.school-flow__table-head,
+.school-flow__table-row {
+    display: grid;
+    grid-template-columns: minmax(132px, 1.4fr) 74px 92px 64px minmax(100px, 1fr);
+    align-items: center;
+    gap: 8px;
+    min-width: 620px;
+}
+
+.school-flow__table--classes .school-flow__table-head,
+.school-flow__table--classes .school-flow__table-row {
+    grid-template-columns: 72px 84px minmax(120px, 1fr) 82px 128px;
+}
+
+.school-flow__table-head {
+    min-height: 42px;
+    color: #697283;
+    font-size: 12px;
+    font-weight: 1000;
+}
+
+.school-flow__table-row {
+    min-height: 54px;
+    border-top: 1px solid #edf1f6;
+    color: #313b4c;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.school-flow__table-row strong {
+    color: #202938;
+    font-weight: 1000;
+}
+
+.school-flow__chips,
+.school-flow__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.school-flow__chips span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    color: #697283;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.school-flow__tabs {
+    margin: 18px 0;
+}
+
+.school-flow__tabs button {
+    min-height: 36px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #edf2f8;
+    color: #4a5568;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.school-flow__tabs button.is-active {
+    background: var(--am-primary);
+    color: #ffffff;
+}
+
+.school-flow__student-card {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+}
+
+.school-flow__student-card strong {
+    display: block;
+    color: #27303d;
+    font-size: 20px;
+    font-weight: 1000;
+}
+
+.school-flow__student-card span,
+.school-flow__student-card small,
+.school-flow__homework-card span,
+.school-flow__feedback-card span,
+.school-flow__document-card span {
+    display: block;
+    margin-top: 4px;
+    color: #596474;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.school-flow__summary-card {
+    display: grid;
+    gap: 8px;
+    padding: 18px;
+}
+
+.school-flow__summary-card p {
+    margin: 0;
+    color: #465264;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.school-flow__summary-card strong {
+    color: var(--am-primary);
+    font-weight: 1000;
+}
+
+.school-flow__bars {
+    display: grid;
+    gap: 10px;
+}
+
+.school-flow__bars article {
+    display: grid;
+    grid-template-columns: 86px 46px 1fr;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.school-flow__bars div {
+    height: 9px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #e7edf5;
+}
+
+.school-flow__bars i {
+    display: block;
+    height: 100%;
+    border-radius: 8px;
+    background: var(--am-success);
+}
+
+.school-flow__calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+    padding: 14px;
+}
+
+.school-flow__calendar span {
+    display: inline-grid;
+    place-items: center;
+    min-height: 34px;
+    border-radius: 8px;
+    background: #f4f7fb;
+    color: #576275;
+    font-size: 12px;
+    font-weight: 1000;
+}
+
+.school-flow__calendar .is-success {
+    background: var(--am-success-soft);
+    color: #0b7d57;
+}
+
+.school-flow__calendar .is-warning {
+    background: var(--am-warning-soft);
+    color: var(--am-warning-ink);
+}
+
+.school-flow__calendar .is-danger {
+    background: var(--am-danger-soft);
+    color: var(--am-danger);
+}
+
+.school-flow__bullets {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+}
+
+.school-flow__bullets p {
+    position: relative;
+    margin: 0;
+    padding-left: 16px;
+    color: #3e4858;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.school-flow__bullets p::before {
+    position: absolute;
+    top: 0.58em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--am-primary);
+    content: "";
+}
+
+.school-flow__homework-card,
+.school-flow__feedback-card {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+}
+
+.school-flow__homework-card strong,
+.school-flow__feedback-card strong,
+.school-flow__document-card strong {
+    color: #27303d;
+    font-size: 16px;
+    font-weight: 1000;
+}
+
+.school-flow__homework-card button {
+    justify-self: start;
+    margin-top: 6px;
+    color: var(--am-primary);
+}
+
+.school-flow__document-card {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+    padding: 16px;
+}
+
+.school-flow__document-card > ion-icon {
+    color: var(--am-primary);
+    font-size: 28px;
+}
+
+.school-flow__document-card div div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.school-flow__report-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.school-flow__report-cards article {
+    display: grid;
+    gap: 8px;
+    min-height: 94px;
+    padding: 14px;
+}
+
+.school-flow__report-cards ion-icon {
+    color: var(--am-primary);
+    font-size: 22px;
+}
+
+.school-flow__report-cards span {
+    color: #5d6676;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.school-flow__report-cards strong {
+    color: var(--am-primary);
+    font-size: 24px;
+    font-weight: 1000;
+}
+
+.school-flow__graph {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 16px;
+}
+
+.school-flow__graph div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: end;
+    gap: 12px;
+    height: 150px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f4f7fb;
+}
+
+.school-flow__graph div span {
+    display: block;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, var(--am-primary), var(--am-success));
+}
+
+.school-flow__graph p {
+    margin: 0;
+    color: #596474;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.school-flow__state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 180px;
+    padding: 24px;
+    color: #536071;
+    font-weight: 900;
+}
+
+@media (max-width: 420px) {
+    .school-flow__scroll {
+        padding: 14px 16px 106px;
+    }
+
+    .school-flow__filters,
+    .school-flow__report-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .school-flow__cta {
+        bottom: 76px;
+    }
+
+    .school-flow__student-card {
+        grid-template-columns: 46px 1fr;
+    }
+
+    .school-flow__student-card strong {
+        font-size: 17px;
+    }
+
+    .school-flow__bars article {
+        grid-template-columns: 74px 42px 1fr;
+    }
+
+    .school-flow__calendar {
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .school-flow__calendar span {
+        min-height: 30px;
+        font-size: 10px;
+    }
+}
